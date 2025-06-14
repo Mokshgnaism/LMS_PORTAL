@@ -6,7 +6,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const router = express.Router();
-const upload = multer();
+const upload = multer({
+  limits: {
+    fileSize: 100 * 1024 * 1024,
+  },
+});
+
 
 const s3 = new AWS.S3({
   region: process.env.AWS_REGION,
