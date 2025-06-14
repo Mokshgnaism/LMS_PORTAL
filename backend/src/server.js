@@ -13,8 +13,9 @@ dotenv.config();
 import path from "path"
 const app = express();
 import dbConnect from "./lib/dbConnect.js";
-app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // if you ever post form data
+app.use(express.json({ limit: "100mb" }));
+app.use(express.urlencoded({ extended: true, limit: "100mb" }));
+
 
 app.use(cookieParser());
 
